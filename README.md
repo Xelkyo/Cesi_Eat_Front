@@ -4,4 +4,4 @@
 **Stack technique :** MongoDb, Express.js, Vue.js/Angular, Node.js
 
 
-**Language :** JavaScript (optional: TypeScript)
+**Langage :** JavaScript (optional: TypeScript)
