@@ -1,5 +1,42 @@
 <script setup>
+import { SHA256 } from 'crypto-js';
 
+const formData = {
+  email: '',
+  address: '',
+  birth: '',
+  lastName: '',
+  firstName: '',
+  password: '',
+  phone: '',
+  role:'Client'
+};
+
+async function submitForm(event) {
+  formData.password = SHA256(formData.password).toString();
+  event.preventDefault(); // Empêche le comportement par défaut du formulaire
+  // Accédez aux données du formulaire via this.formData
+  console.log('Données du formulaire:', formData);
+
+  try {
+    const response = await fetch(import.meta.env.VITE_ENDPOINT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        mode: 'no-cors'
+      },
+      body: JSON.stringify(formData)
+    });
+    if (response.ok) {
+      console.log('Le formulaire a été soumis avec succès !');
+    } else {
+      console.log('Une erreur s\'est produite lors de la soumission du formulaire.');
+    }
+  } catch (error) {
+    console.error('Une erreur s\'est produite lors de la requête POST :', error);
+  }
+
+}
 </script>
 
 <template>
@@ -8,23 +45,25 @@
     <div class="text">
       Veuillez entrer vos informations
     </div>
-    <form action="" method="post" class="form">
+    <form @submit="submitForm" class="form">
       <div class="form"> Nom</div>
-      <input type="text" name="Lname" id="Lname" required>
+      <input v-model.trim="formData.lastName" type="text" name="Lname" id="Lname" required>
       <div class="form"> Prénom</div>
-      <input type="text" name="Fname" id="Fname" required>
+      <input v-model.trim="formData.firstName" type="text" name="Fname" id="Fname" required>
       <div class="form"> Adresse e-mail</div>
-      <input type="email" name="email" id="email" required>
+      <input v-model.trim="formData.email" type="email" name="email" id="email" required>
       <div class="form">Mot de passe</div>
-      <input type="password" name="pwd" id="pwd" required>
+      <input v-model.trim="formData.password" type="password" name="pwd" id="pwd" minlength="7" required>
       <div class="form">Adresse</div>
-      <textarea name="Address" id="address" required></textarea>
+      <textarea v-model.trim="formData.address" name="Address" id="address" required></textarea>
       <div class="form">Numéro de téléphone</div>
-      <input type="phone" name="phone" id="phone" required>
+      <input v-model.trim="formData.phone" type="phone" name="phone" id="phone" required>
       <div class="form">Date de naissance (facultatif)</div>
-      <input type="date" name="birth" id="birth">
+      <input v-model="formData.birth" type="date" name="birth" id="birth">
+
       <input type="submit" value="Valider">
     </form>
+    <router-link class="link" to="/logIn">Vous avez déjà un compte ? Cliquez ici pour vous connecter</router-link>
   </div>
 </template>
 
@@ -41,6 +80,11 @@ body {
   font-family: sans-serif
 }
 
+.link{
+  margin-top: 25px;
+    color:#ECB056;
+    text-align: center;
+}
 
 .main-div {
   display: flex;

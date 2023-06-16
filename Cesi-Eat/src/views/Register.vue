@@ -21,11 +21,9 @@
             </router-link>
             <router-link to="/registerRestaurant" custom v-slot="{ navigate }">
                 <button @click="navigate" role="link" class="links">
-                    Restaurant
+                    Restaurateur
                 </button>
             </router-link>
-
-
         </div>
     </body>
 </template>

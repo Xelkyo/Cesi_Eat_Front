@@ -4,13 +4,14 @@ import { SHA256 } from 'crypto-js';
 
 const formData = {
   email: '',
-  address: '',
+  /*address: '',
   companyName: '',
-  brandName: '',
+  brandName: '',*/
   lastName: '',
   firstName: '',
   password: '',
-  phone: ''
+  phone: '',
+  role:'Restaurateur'
 };
 
 async function submitForm(event) {
@@ -20,10 +21,11 @@ async function submitForm(event) {
   console.log('Données du formulaire:', formData);
 
   try {
-    const response = await fetch(process.env.VITE_ENDPOINT_URL, {
+    const response = await fetch(import.meta.env.VITE_ENDPOINT_URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        mode: 'no-cors'
       },
       body: JSON.stringify(formData)
     });
@@ -46,7 +48,7 @@ async function submitForm(event) {
       Veuillez entrer vos informations
     </div>
     <form @submit="submitForm" class="form">
-      <div class="form">Adresse de l'établissement</div>
+      <!--<div class="form">Adresse de l'établissement</div>
       <textarea v-model="formData.address" name="Address" id="address" placeholder="12 rue Magellan 31670 Labège"
         required></textarea>
       <div class="form"> Nom de l'établissement</div>
@@ -54,7 +56,7 @@ async function submitForm(event) {
         placeholder="Exemple: Chez Fan Fan - 58, rue de la République" required>
       <div class="form"> Nom de la marque</div>
       <input v-model="formData.brandName" type="text" name="Brandname" id="Bname" placeholder="Exemple: Pizzeria Fan Fan"
-        required>
+        required> -->
       <div class="form"> Nom de famille</div>
       <input v-model="formData.lastName" type="text" name="Lname" id="Lname" required>
       <div class="form"> Prénom</div>
@@ -62,12 +64,13 @@ async function submitForm(event) {
       <div class="form"> Adresse e-mail</div>
       <input v-model="formData.email" type="email" name="email" id="email" required>
       <div class="form">Mot de passe</div>
-      <input v-model="formData.password" type="password" name="pwd" id="pwd" required>
+      <input v-model="formData.password" type="password" name="pwd" id="pwd" minlength="7" required>
       <div class="form">Numéro de téléphone</div>
       <input v-model="formData.phone" type="phone" name="phone" id="phone" required>
 
       <input type="submit" value="Valider">
     </form>
+    <router-link class="link" to="/logIn">Vous avez déjà un compte ? Cliquez ici pour vous connecter</router-link>
   </div>
 </template>
 
@@ -90,6 +93,12 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.link{
+  margin-top: 25px;
+    color:#ECB056;
+    text-align: center;
 }
 
 input {
