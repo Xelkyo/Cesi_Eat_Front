@@ -22,8 +22,7 @@ async function submitForm(event) {
     const response = await fetch(import.meta.env.VITE_ENDPOINT_URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        mode: 'no-cors'
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
     });

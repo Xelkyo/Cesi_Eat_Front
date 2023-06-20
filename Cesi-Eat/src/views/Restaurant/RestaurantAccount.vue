@@ -1,5 +1,5 @@
 <script setup>
-import NavbarClient from '../../components/NavbarClient.vue';
+import NavbarRestaurant from '../../components/NavbarRestaurant.vue';
 import Band from '../../components/Band.vue';
 
 import { SHA256 } from 'crypto-js';
@@ -12,7 +12,7 @@ const formData = {
   firstName: '',
   password: '',
   phone: '',
-  role:'Client'
+  role:'Restaurant'
 };
 
 async function getUserData() {
@@ -65,25 +65,21 @@ async function submitForm(event) {
 </script>
 
 <template>
-    <NavbarClient />
+    <NavbarRestaurant />
     <Band name="Mon Compte"/>
     <div class="main-div">
-        <article>
+        <article class="form-article">
             <form @submit="submitForm" class="form">
-                <div class="form"> Nom</div>
+                <div class="form-div"> Nom</div>
                 <input v-model="formData.lastName" type="text" name="Lname" id="Lname" required> <!--:value="UserData.lastName" -->
-                <div class="form"> Prénom</div>
+                <div class="form-div"> Prénom</div>
                 <input v-model="formData.firstName" type="text" name="Fname" id="Fname" required>
-                <div class="form"> Adresse e-mail</div>
+                <div class="form-div"> Adresse e-mail</div>
                 <input v-model="formData.email" type="email" name="email" id="email" required>
-                <div class="form">Mot de passe</div>
+                <div class="form-div">Mot de passe</div>
                 <input v-model="formData.password" type="password" name="pwd" id="pwd" minlength="7" required>
-                <div class="form">Adresse</div>
-                <textarea v-model="formData.address" name="Address" id="address" required></textarea>
-                <div class="form">Numéro de téléphone</div>
+                <div class="form-div">Numéro de téléphone</div>
                 <input v-model="formData.phone" type="phone" name="phone" id="phone" required>
-                <div class="form">Date de naissance (facultatif)</div>
-                <input v-model="formData.birth" type="date" name="birth" id="birth">
 
                 <input type="submit" value="Valider">
             </form>
@@ -91,57 +87,33 @@ async function submitForm(event) {
         <article>
             <router-link class="link" to="/friendRefer" custom v-slot="{ navigate }">
                 <button @click="navigate" role="link" class="links">
-                    Parrainer un ami !
+                    Parrainez un restaurateur !
                 </button>
             </router-link>
-        </article>
-        <article>
-            <div class="history">[Historique ici]</div>
         </article>
     </div>
 </template>
 
 <style scoped>
-.Band {
-    margin-top: 10px;
-    background-color: #ECB056;
-    width: 99%;
-    height: 17%;
-    font-size: 58px;
-    color: black;
-    padding-top: 15px;
-    padding-left: 30px;
-}
-
-.history{
-    background-color:#ECB056;
-    width: 300px;
-    height: 500px;
-    padding-right: 25px;
-    text-align: center;
-    font-size: 20px;
-    margin-top:20px;
-}   
 
 .main-div{
     display: flex;
     align-self: flex-start;
     padding-left: 10px;
     padding-top: 10px;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 98%;
 }
 
-.form {
+.form-article{
+  width: 25%;
+}
+
+.form-div {
   text-align:left;
   color: #ECB056;
   font-family: sans-serif;
   font-size: large;
-}
-
-textarea{
-  min-width: 105%;
-  max-width: 105%;
 }
 
 input[type="submit"]{
@@ -161,7 +133,7 @@ input[type="submit"]{
   text-decoration: none;
   transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
   touch-action: manipulation;
-  width: 70%;
+  width: 100%;
   will-change: transform;
   margin-top: 8px;
   align-items: flex-end;
@@ -169,8 +141,8 @@ input[type="submit"]{
 
 input {
   width: 100%;
-  padding: 8px;
-  margin-bottom: 10px;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
 form{

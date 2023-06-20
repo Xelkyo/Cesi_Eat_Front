@@ -1,0 +1,18 @@
+{
+    "restaurants": [
+      {
+        "id" :1,
+        "name": "Burger King Labège",
+        "brand":"Burger King",
+        "address": "15 rue Magellan 31670 Labège",
+        "img":"https://media.discordapp.net/attachments/1119243512446210078/1120279159629955092/bk.png?width=666&height=666"
+      },
+      {
+        "id" :2,
+        "name": "Mc Donalds Labège",
+        "brand":"Mc DonaldsBurger King",
+        "address": "6 avenue de l'Occitane 31670 Labège",
+        "img": "https://media.discordapp.net/attachments/1119243512446210078/1120271588923822130/853px-Mcdonalds_France_2009_logo.png?width=740&height=666"
+      }
+    ]
+}

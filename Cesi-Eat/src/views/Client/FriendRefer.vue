@@ -1,11 +1,11 @@
 <script setup>
-import Navbar from '../../components/Navbar.vue';
+import NavbarClient from '../../components/NavbarClient.vue';
 
 
 </script>
 
 <template>
-    <Navbar/>
+    <NavbarClient/>
     <div>[Vous êtes bien sur la page pour parrainer un ami]</div>
 </template>
 

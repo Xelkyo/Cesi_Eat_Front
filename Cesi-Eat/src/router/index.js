@@ -10,6 +10,12 @@ import OrderFollow from '../views/Client/OrderFollow.vue'
 import ClientAccount from '../views/Client/ClientAccount.vue'
 import BasketClient from '../views/Client/BasketClient.vue'
 import FriendRefer from '../views/Client/FriendRefer.vue'
+import PaymentPage from '../views/Client/PaymentPage.vue'
+import MainRestaurant from '../views/Restaurant/MainRestaurant.vue'
+import OrderRestaurant from '../views/Restaurant/OrderRestaurant.vue'
+import RestaurantAccount from '../views/Restaurant/RestaurantAccount.vue'
+import CreateRestaurant from '../views/Restaurant/CreateRestaurant.vue'
+import MenuRestaurant from '../views/Restaurant/MenuRestaurant.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -68,6 +74,36 @@ const router = createRouter({
       path:'/friendRefer',
       name:'/FriendRefer',
       component:FriendRefer
+    },
+    {
+      path:'/paymentPage',
+      name:'/PaymentPage',
+      component:PaymentPage
+    },
+    {
+      path:'/mainRestaurant',
+      name:'MainRestaurant',
+      component:MainRestaurant
+    },
+    {
+      path:'/orderRestaurant',
+      name:'OrderRestaurant',
+      component:OrderRestaurant
+    },
+    {
+      path:'/restaurantAccount',
+      name:'RestaurantAccount',
+      component:RestaurantAccount
+    },
+    {
+      path:'/createRestaurant',
+      name:'CreateRestaurant',
+      component:CreateRestaurant
+    },
+    {
+      path:'/menuRestaurant',
+      name:'MenuRestaurant',
+      component:MenuRestaurant
     }
   ]
 })

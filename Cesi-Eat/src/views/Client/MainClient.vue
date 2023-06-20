@@ -1,5 +1,5 @@
 <script setup>
-import Navbar from '../../components/Navbar.vue';
+import NavbarClient from '../../components/NavbarClient.vue';
 import { SHA256 } from 'crypto-js';
 
 async function getRestaurant() {
@@ -26,7 +26,7 @@ getRestaurant()
 </script>
 
 <template>
-    <Navbar />
+    <NavbarClient />
 
     <body>
         <p>Choisissez votre restaurant !</p>
