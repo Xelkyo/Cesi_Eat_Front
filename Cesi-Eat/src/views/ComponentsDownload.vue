@@ -10,6 +10,14 @@ import NavbarClient from '../components/NavbarClient.vue';
     </form>
         <div>Exemple ci-dessous</div>
         <NavbarClient />
+
+        <div class="basket-component">
+            <form action="https://www.npmjs.com/package/basket-fisea4-paa" method="get" target="_blank">
+        <button type="submit" class="component-button">Voici notre composant Panier client</button>
+    </form>
+        <div>Exemple ci-dessous</div>
+        <NavbarClient />
+        </div>
 </template>
 
 <style scoped>

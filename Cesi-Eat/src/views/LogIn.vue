@@ -47,11 +47,11 @@ async function submitForm(event) {
         <div class="form">Mot de passe</div>
         <input v-model="formData.password" type="password" name="pwd" id="pwd" required>
         <div>
-          <input v-model="formData.role" type="radio" id="Client" name="role" value="Client" checked>
+          <input v-model="formData.role" type="radio" id="Client" name="role" value="Client" required>
           <label for="Client">Client</label>
-          <input v-model="formData.role" type="radio" id="Delivery" name="role" value="Delivery">
+          <input v-model="formData.role" type="radio" id="Delivery" name="role" value="Delivery" required>
           <label for="Delivery">Livreur</label>
-          <input v-model="formData.role" type="radio" id="Restaurant" name="role" value="Restaurant">
+          <input v-model="formData.role" type="radio" id="Restaurant" name="role" value="Restaurant" required>
           <label for="Restaurant">Restaurateur</label>
         </div>
 
