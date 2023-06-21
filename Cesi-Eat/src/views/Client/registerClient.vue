@@ -9,7 +9,7 @@ const formData = {
   firstName: '',
   password: '',
   phone: '',
-  role:'Client'
+  role:'customer'
 };
 
 async function submitForm(event) {
@@ -22,7 +22,7 @@ async function submitForm(event) {
     const response = await fetch(import.meta.env.VITE_ENDPOINT_URL, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData)
     });
@@ -30,6 +30,7 @@ async function submitForm(event) {
       console.log('Le formulaire a été soumis avec succès !');
     } else {
       console.log('Une erreur s\'est produite lors de la soumission du formulaire.');
+      console.table(response)
     }
   } catch (error) {
     console.error('Une erreur s\'est produite lors de la requête POST :', error);

@@ -16,6 +16,7 @@ import OrderRestaurant from '../views/Restaurant/OrderRestaurant.vue'
 import RestaurantAccount from '../views/Restaurant/RestaurantAccount.vue'
 import CreateRestaurant from '../views/Restaurant/CreateRestaurant.vue'
 import MenuRestaurant from '../views/Restaurant/MenuRestaurant.vue'
+import ComponentsDownload from '../views/ComponentsDownload.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -104,7 +105,17 @@ const router = createRouter({
       path:'/menuRestaurant',
       name:'MenuRestaurant',
       component:MenuRestaurant
+    },
+    {
+      path:'/componentsDownload',
+      name:'ComponentsDownload',
+      component:ComponentsDownload
     }
+    // {
+    //   path:'/Restaurants/:id',
+    //   name:'RestaurantMenu',
+    //   component:RestaurantMenu
+    // }
   ]
 })
 

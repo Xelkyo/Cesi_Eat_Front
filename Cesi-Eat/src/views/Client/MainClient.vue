@@ -1,6 +1,7 @@
 <script setup>
 import NavbarClient from '../../components/NavbarClient.vue';
 import { SHA256 } from 'crypto-js';
+import FooterC from '../../components/Footer.vue';
 
 async function getRestaurant() {
   try {
@@ -44,6 +45,7 @@ getRestaurant()
             <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
         </div>
     </body>
+    <FooterC />
 </template>
 
 <style scoped>
