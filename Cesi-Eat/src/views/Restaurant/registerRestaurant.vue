@@ -21,7 +21,7 @@ async function submitForm(event) {
   console.log('Données du formulaire:', formData);
 
   try {
-    const response = await fetch(import.meta.env.VITE_ENDPOINT_URL, {
+    const response = await fetch(import.meta.env.VITE_ENDPOINT_URL+"user/register", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
