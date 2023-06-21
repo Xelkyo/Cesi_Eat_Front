@@ -8,7 +8,7 @@ const formData = {
   password: '',
   phone: '',
   vehicle:'',
-  role:'Delivery'
+  role:'deliveryperson'
 };
 
 async function submitForm(event) {
@@ -22,7 +22,6 @@ async function submitForm(event) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        mode: 'no-cors'
       },
       body: JSON.stringify(formData)
     });

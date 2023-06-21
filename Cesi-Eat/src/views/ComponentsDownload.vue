@@ -16,7 +16,7 @@ import NavbarClient from '../components/NavbarClient.vue';
         <button type="submit" class="component-button">Voici notre composant Panier client</button>
     </form>
         <div>Exemple ci-dessous</div>
-        
+
         </div>
 </template>
 
@@ -29,6 +29,7 @@ import NavbarClient from '../components/NavbarClient.vue';
 .basket-component{
     display: flex;
     width: 100%;
+    flex-direction: column;
     
 }
 
