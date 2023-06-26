@@ -5,7 +5,7 @@ import FooterC from '../../components/Footer.vue';
 
 async function getRestaurant() {
   try {
-    const response = await fetch(import.meta.env.RESTAURANTS_LIST, {
+    const response = await fetch(import.meta.env.VITE_ENDPOINT_URL+'user/restaurants', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',

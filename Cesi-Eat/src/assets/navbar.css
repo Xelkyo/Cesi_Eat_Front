@@ -61,3 +61,22 @@ button:active {
     width: auto;
     max-height: 80px;
 }
+
+@media screen and (max-width: 950px) {
+    .Links{
+        font-size: 10px;
+        width: max-content;
+        margin-left: 5px;
+    }
+
+    .logo{
+        max-height: 50px;
+    }
+
+    button{
+        font-size: 12px;
+        width: 80px;
+        text-align: center;
+
+    }
+}

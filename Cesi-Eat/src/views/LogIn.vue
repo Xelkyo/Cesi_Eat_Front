@@ -1,5 +1,6 @@
 <script setup>
 import { SHA256 } from 'crypto-js';
+import router from "../router/index.js";
 
 const formData = {
   email: '',
@@ -17,12 +18,27 @@ async function submitForm(event) {
     const response = await fetch(import.meta.env.VITE_ENDPOINT_URL+"user/login", {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData)
     });
     if (response.ok) {
       console.log('Le formulaire a été soumis avec succès !');
+      switch(formData.role){
+        case 'restaurantmanager':
+        router.push({path:'/mainRestaurant'})
+        break;
+        case 'customer':
+        router.push({path:'/mainClient'})
+        break;
+        case 'deliveryperson':
+        router.push({path:'/mainDelivery'})
+        break;
+      }
+
+      if(formData.role == 'restaurantmanager'){
+        router.push({path:'/mainRestaurant'})
+      }
     } else {
       console.log('Une erreur s\'est produite lors de la soumission du formulaire.');
     }
@@ -46,11 +62,11 @@ async function submitForm(event) {
         <div class="form">Mot de passe</div>
         <input v-model="formData.password" type="password" name="pwd" id="pwd" required>
         <div>
-          <input v-model="formData.role" type="radio" id="Client" name="role" value="Client" required>
+          <input v-model="formData.role" type="radio" id="Client" name="role" value="customer" required>
           <label for="Client">Client</label>
-          <input v-model="formData.role" type="radio" id="Delivery" name="role" value="Delivery" required>
+          <input v-model="formData.role" type="radio" id="Delivery" name="role" value="deliveryperson" required>
           <label for="Delivery">Livreur</label>
-          <input v-model="formData.role" type="radio" id="Restaurant" name="role" value="Restaurant" required>
+          <input v-model="formData.role" type="radio" id="Restaurant" name="role" value="restaurantmanager" required>
           <label for="Restaurant">Restaurateur</label>
         </div>
 
