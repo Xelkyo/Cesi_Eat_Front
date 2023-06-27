@@ -1,7 +1,9 @@
 <script setup>
 import NavbarClient from '../../components/NavbarClient.vue';
-import { SHA256 } from 'crypto-js';
 import FooterC from '../../components/Footer.vue';
+import RestaurantItem from '../../components/RestaurantItem.vue'
+import { ref, onBeforeMount } from 'vue';
+
 
 async function getRestaurant() {
   try {
@@ -11,18 +13,25 @@ async function getRestaurant() {
         'Content-Type': 'application/json',
       },
     });
+    const jsonData = await response.json();
+    let dataBody = jsonData.body
     if (response.ok) {
-      console.log(response);
+      return (dataBody);
     } else {
       console.log('Une erreur s\'est produite lors de la récupération des restaurants');
     }
   } catch (error) {
     console.error('Une erreur s\'est produite lors de la requête GET :', error);
   }
-
 }
 
-getRestaurant()
+// onBeforeMount( async () => {
+//     let restaurant = await getRestaurant()
+// })
+
+// for (let restaurant of restaurants){
+//   console.log(restaurant.name)
+// }
 
 </script>
 
@@ -32,15 +41,12 @@ getRestaurant()
     <body>
         <p>Choisissez votre restaurant !</p>
         <div class="restaurants-list">
-            <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
-            <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
-            <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
-            <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
-            <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
-            <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
-            <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
-            <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
-            <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
+
+          <div v-for="restaurant in restaurants" :key="restaurant._id" class="restaurant-div">
+                <RestaurantItem 
+                :name="restaurant.name" 
+                :img="restaurant.img" />
+            </div>
             <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
             <img :src="`/img/No-Image-Placeholder.svg.png`" class="placeholder" alt="Placeholder img">
         </div>

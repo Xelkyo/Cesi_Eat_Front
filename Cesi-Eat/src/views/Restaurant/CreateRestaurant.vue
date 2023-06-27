@@ -1,28 +1,28 @@
 <script setup>
 import Band from '../../components/Band.vue';
 import NavbarRestaurant from '../../components/NavbarRestaurant.vue';
+import router from "../../router/index.js";
 
 const formData = {
-    email: '',
     address: '',
-    companyName: '',
-    brandName: '',
-    img: ''
+    name: '',
+    image: ''
 };
 
 async function submitForm(event) {
-
+    event.preventDefault();
+    console.log(formData)
     try {
-        const response = await fetch(import.meta.env.COMPLETE, {
+        const response = await fetch(import.meta.env.VITE_ENDPOINT_URL+'user/restaurant', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                mode: 'no-cors'
             },
             body: JSON.stringify(formData)
         });
         if (response.ok) {
             console.log('Le formulaire a été soumis avec succès !');
+            router.push({path:'/mainRestaurant'})
         } else {
             console.log('Une erreur s\'est produite lors de la soumission du formulaire.');
         }
@@ -44,15 +44,11 @@ async function submitForm(event) {
                 required></textarea>
 
             <div class="form"> Nom de l'établissement</div>
-            <input v-model="formData.companyName" type="text" name="Companyname" id="Cname"
+            <input v-model="formData.name" type="text" name="Cname" id="Cname"
                 placeholder="Exemple: Chez Fan Fan - 58, rue de la République" required>
 
-            <div class="form"> Nom de la marque</div>
-            <input v-model="formData.brandName" type="text" name="Brandname" id="Bname"
-                placeholder="Exemple: Pizzeria Fan Fan" required>
-
             <div class="form"> Image au format 1:1 (url)</div>
-            <input v-model="formData.img" type="text" name="img" id="img" required>
+            <input v-model="formData.image" type="text" name="img" id="img" required>
 
             <input type="submit" value="Valider">
         </form>

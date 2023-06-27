@@ -20,6 +20,7 @@
 }
 
 footer{
+    bottom: 0;
     margin-top: 5%;
     margin-bottom: 2%;
     width: 100%;

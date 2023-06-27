@@ -7,7 +7,7 @@ const props = defineProps(['name', 'img'])
         <div class="img-back">
             <router-link to="/menuRestaurant" custom v-slot="{ navigate }">
                 <button @click="navigate" role="link" class="menuRestaurant">
-                    <img :src="props.img" class="restaurant-img">
+                    <img :src="props.img||'/img/No-Image-Placeholder.svg.png'" class="restaurant-img">
                 </button>
             </router-link>
         </div>

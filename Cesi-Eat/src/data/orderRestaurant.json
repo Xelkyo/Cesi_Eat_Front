@@ -1,0 +1,47 @@
+{
+    "orders": [
+        {
+            "id": 1,
+            "restaurant": "McDonalds Labège",
+            "restaurant_img": "https://media.discordapp.net/attachments/1119243512446210078/1120271588923822130/853px-Mcdonalds_France_2009_logo.png?width=736&height=662",
+            "price": 19.85,
+            "order_items": [
+                {
+                    "id": 1,
+                    "name": "Moyenne frite",
+                    "quantity": 2
+                },
+                {
+                    "id": 2,
+                    "name": "BigMac",
+                    "quantity": 1
+                },
+                {
+                    "id": 3,
+                    "name": "Coca-Cola 40cl",
+                    "quantity": 1
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "restaurant": "Burger King Labège",
+            "restaurant_img": "https://media.discordapp.net/attachments/1119243512446210078/1120279159629955092/bk.png?width=662&height=662",
+            "price": 35.50,
+            "order_items": [
+                {
+                    "name": "King Fries",
+                    "quantity": 1
+                },
+                {
+                    "name": "Whopper",
+                    "quantity": 1
+                },
+                {
+                    "name": "Steakhouse",
+                    "quantity": 1
+                }
+            ]
+        }
+    ]
+}

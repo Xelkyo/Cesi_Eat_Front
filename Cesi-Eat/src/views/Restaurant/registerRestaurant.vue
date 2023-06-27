@@ -1,6 +1,7 @@
 <script setup>
 
 import { SHA256 } from 'crypto-js';
+import router from "../../router/index.js";
 
 const formData = {
   email: '',
@@ -30,6 +31,7 @@ async function submitForm(event) {
     });
     if (response.ok) {
       console.log('Le formulaire a été soumis avec succès !');
+      router.push({path:'/login'})
     } else {
       console.log('Une erreur s\'est produite lors de la soumission du formulaire.');
     }
