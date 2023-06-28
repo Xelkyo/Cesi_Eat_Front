@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "crypto-js": "^4.1.1",
+    "js-cookie": "^3.0.5",
     "pinia": "^2.1.4",
     "vue": "^3.3.2",
     "vue-router": "^4.2.0"

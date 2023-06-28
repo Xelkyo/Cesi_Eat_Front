@@ -23,11 +23,20 @@ async function submitForm(event) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(formData),
-      token: document.cookie
+      //token: document.cookie
       //credentials: 'include' // Inclure les cookies
     });
     if (response.ok) {
       console.log('Le formulaire a été soumis avec succès !');
+      console.log(response)
+      const responseData = await response.json();
+      console.log(responseData)
+
+      const token = responseData.token;
+
+      localStorage.setItem('token', token);
+
+
       switch(formData.role){
         case 'restaurantmanager':
         router.push({path:'/mainRestaurant'})
