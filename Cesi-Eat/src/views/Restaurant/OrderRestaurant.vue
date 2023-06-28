@@ -14,7 +14,7 @@ import OrderReview from '../../components/OrderReview.vue';
                 :restaurant="order.restaurant" 
                 :order_items="order.order_items" 
                 :price="order.price" 
-                :img="order.restaurant_img" />
+                :img="order.restaurant_img"/>
             </div>
 
 </template>

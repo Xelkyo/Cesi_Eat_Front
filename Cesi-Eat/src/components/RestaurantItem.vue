@@ -1,13 +1,23 @@
 <script setup>
-const props = defineProps(['name', 'img'])
+import {saveMenuSelect} from '../store/menu.js'
+
+const menuStore = saveMenuSelect()
+const props = defineProps(['name', 'image', 'source', '_id'])
+
+let pathlink = "/menu"+props.source;
+
+function storeId(){
+    menuStore.transfer_id(props._id,props.name)
+}
+
 </script>
 
 <template>
     <div class="restaurantItem-div">
         <div class="img-back">
-            <router-link to="/menuRestaurant" custom v-slot="{ navigate }">
-                <button @click="navigate" role="link" class="menuRestaurant">
-                    <img :src="props.img||'/img/No-Image-Placeholder.svg.png'" class="restaurant-img">
+            <router-link :to=pathlink custom v-slot="{ navigate }">
+                <button @click="navigate(),storeId()" role="link" class="menu">
+                    <img :src="props.image||'/img/No-Image-Placeholder.svg.png'" class="restaurant-img">
                 </button>
             </router-link>
         </div>

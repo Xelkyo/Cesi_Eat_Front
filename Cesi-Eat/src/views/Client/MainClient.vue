@@ -1,6 +1,5 @@
 <script setup>
 import NavbarClient from '../../components/NavbarClient.vue';
-import FooterC from '../../components/Footer.vue';
 import RestaurantItem from '../../components/RestaurantItem.vue'
 import { ref, onBeforeMount } from 'vue';
 
@@ -32,25 +31,20 @@ onBeforeMount( async () => {
   await getRestaurant()
 })
 
-// for (let restaurant of restaurants){
-//   console.log(restaurant.name)
-// }
-
 </script>
 
-<template onload="getRestaurant()">
+<template>
   <NavbarClient />
 
   <body>
     <p>Choisissez votre restaurant !</p>
     <div class="restaurants-list">
         <div v-for="restaurant in restaurants" :key="restaurant._id" class="restaurant-div">
-          <RestaurantItem :name="restaurant.name" :img="restaurant.img" />
+          <RestaurantItem :name="restaurant.name" :image="restaurant.image" source="Client" :_id="restaurant._id"/>
         </div>
 
     </div>
   </body>
-  <FooterC />
 </template>
 
 <style scoped>
@@ -67,6 +61,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  width: 90%;
 }
 
 .placeholder {
@@ -75,7 +70,8 @@ body {
 }
 
 .restaurant-div{
-
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 </style>

@@ -8,6 +8,8 @@ const formData = {
   role: ''
 };
 
+//document.cookie = 'token' + "=" + token + '; path=/;' + 99999999;
+
 async function submitForm(event) {
   formData.password = SHA256(formData.password).toString();
   event.preventDefault(); // Empêche le comportement par défaut du formulaire
@@ -20,7 +22,9 @@ async function submitForm(event) {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
+      token: document.cookie
+      //credentials: 'include' // Inclure les cookies
     });
     if (response.ok) {
       console.log('Le formulaire a été soumis avec succès !');
@@ -41,7 +45,7 @@ async function submitForm(event) {
       }
     } else {
       console.log('Une erreur s\'est produite lors de la soumission du formulaire.');
-      formData.password='';
+      location.reload();
     }
   } catch (error) {
     console.error('Une erreur s\'est produite lors de la requête POST :', error);
