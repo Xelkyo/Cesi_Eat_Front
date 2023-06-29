@@ -9,7 +9,7 @@ const restaurants = ref([]);
 
 async function getRestaurant() {
   try {
-    const response = await fetch(import.meta.env.VITE_ENDPOINT_URL + 'user/restaurants', {
+    const response = await fetch(import.meta.env.VITE_ENDPOINT_URL + 'user/restaurantmanagid', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
