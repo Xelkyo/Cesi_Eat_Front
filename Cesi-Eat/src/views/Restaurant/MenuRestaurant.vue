@@ -42,7 +42,7 @@ async function getItems() {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + localStorage.token
             },
-            body: sentBodyData
+            body: JSON.stringify(sentBodyData)
         });
         const jsonData = await response.json();
         let dataBody = jsonData.body
@@ -67,20 +67,25 @@ onBeforeMount(async () => {
     <NavbarRestaurant />
     <Band :name=name />
 
-    <div v-for="Item in Items" :key="Item.id" class="Item-div">
-        <ItemItemRestaurant 
-        :name="Item.name" 
-        :image="Item.image" 
-        :price="Item.price"
-        :_id="Item._id" />
-    </div>
+    <div class="Item-list">
 
-    <div>
-        <router-link to="/createItem" custom v-slot="{ navigate }">
-            <button @click="navigate" role="link" class="createItem">
-                +
-            </button>
-        </router-link>
+        <div v-for="Item in Items" :key="Item.id" class="Item-div">
+            <ItemItemRestaurant 
+            :name="Item.name" 
+            :image="Item.image" 
+            :price="Item.price" 
+            :_id="Item._id" />
+        </div>
+
+        <div>
+            <router-link to="/createItem" custom v-slot="{ navigate }">
+                <button @click="navigate" role="link" class="createItem">
+                    +
+                </button>
+            </router-link>
+        </div>
+
+
     </div>
 </template>
 
@@ -90,7 +95,18 @@ onBeforeMount(async () => {
     height: 150px;
     background-color: rgb(209, 205, 205);
     border-radius: 20%;
-    margin: 20px;
     font-size: 65px;
+    margin: 20px;
+}
+
+.Item-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    margin-top: 5%;
+}
+
+.Item-div{
+    margin: 20px;
 }
 </style>

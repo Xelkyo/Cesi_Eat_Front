@@ -11,16 +11,22 @@
                 {
                     "id": 1,
                     "name": "Moyenne frite",
+                    "price": 4.99,
+                    "img":"https://media.discordapp.net/attachments/1119243512446210078/1119626984817963038/MOYENNE_FRITE_-_3010.png?width=458&height=458",
                     "quantity": 2
                 },
                 {
                     "id": 2,
                     "name": "BigMac",
-                    "quantity": 1
+                    "price": 2.49,
+                    "quantity": 1,
+                    "img":"https://media.discordapp.net/attachments/1119243512446210078/1119626808485220502/big-mac.png?width=458&height=458"
                 },
                 {
                     "id": 3,
                     "name": "Coca-Cola 40cl",
+                    "price": 1.99,
+                    "img":"https://media.discordapp.net/attachments/1119243512446210078/1119626903276494959/6040.png?width=458&height=458",
                     "quantity": 1
                 }
             ]
@@ -35,14 +41,20 @@
             "order_items": [
                 {
                     "name": "King Fries",
+                    "price": 2.99,
+                    "img":"https://media.discordapp.net/attachments/1119243512446210078/1119626903276494959/6040.png?width=458&height=458",
                     "quantity": 1
                 },
                 {
                     "name": "Whopper",
+                    "price": 9.99,
+                    "img":"https://media.discordapp.net/attachments/1119243512446210078/1119626903276494959/6040.png?width=458&height=458",
                     "quantity": 1
                 },
                 {
                     "name": "Steakhouse",
+                    "price": 8.99,
+                    "img":"https://media.discordapp.net/attachments/1119243512446210078/1119626903276494959/6040.png?width=458&height=458",
                     "quantity": 1
                 }
             ]
