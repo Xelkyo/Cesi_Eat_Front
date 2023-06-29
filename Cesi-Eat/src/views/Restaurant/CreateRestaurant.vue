@@ -2,11 +2,15 @@
 import Band from '../../components/Band.vue';
 import NavbarRestaurant from '../../components/NavbarRestaurant.vue';
 import router from "../../router/index.js";
+import { saveIdUser } from '../../store/IdUser.js'
+
+const SaveID = saveIdUser()
 
 const formData = {
     address: '',
     name: '',
-    image: ''
+    image: '',
+    restaurantmanagerId: SaveID._id
 };
 
 async function submitForm(event) {

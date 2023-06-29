@@ -2,20 +2,23 @@
 import Band from '../../components/Band.vue';
 import NavbarRestaurant from '../../components/NavbarRestaurant.vue';
 import { saveMenuSelect } from '../../store/menu.js'
+import { ref, onBeforeMount } from 'vue';
 
 const menuStore = saveMenuSelect()
+const restaurants = ref([]);
+const sentBodyData = { restaurantId: menuStore._id}
 const name = "Menu de " + menuStore.name;
 
 
 async function getMenus() {
     try {
-        const response = await fetch(import.meta.env.VITE_ENDPOINT_URL + 'menus/ID_TO_COMPLETE', {
+        const response = await fetch(import.meta.env.VITE_ENDPOINT_URL + 'menu/menus', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + localStorage.token
             },
-            body:menuStore._id
+            body:sentBodyData
         });
         const jsonData = await response.json();
         let dataBody = jsonData.body
@@ -32,7 +35,7 @@ async function getMenus() {
 
 async function getItems() {
     try {
-        const response = await fetch(import.meta.env.VITE_ENDPOINT_URL + 'items/ID_TO_COMPLETE', {
+        const response = await fetch(import.meta.env.VITE_ENDPOINT_URL + 'menu/items', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -52,6 +55,10 @@ async function getItems() {
         console.error('Une erreur s\'est produite lors de la requête GET :', error);
     }
 }
+
+onBeforeMount( async () => {
+  await getItems()
+})
 
 </script>
 

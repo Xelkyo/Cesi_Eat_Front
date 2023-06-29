@@ -1,6 +1,9 @@
 <script setup>
 import { SHA256 } from 'crypto-js';
 import router from "../router/index.js";
+import { saveIdUser } from '../store/IdUser.js'
+
+const SaveID = saveIdUser()
 
 const formData = {
   email: '',
@@ -28,14 +31,12 @@ async function submitForm(event) {
     });
     if (response.ok) {
       console.log('Le formulaire a été soumis avec succès !');
-      console.log(response)
       const responseData = await response.json();
       console.log(responseData)
 
       const token = responseData.token;
-
       localStorage.setItem('token', token);
-
+      SaveID.transfer_id(responseData.id)
 
       switch(formData.role){
         case 'restaurantmanager':
