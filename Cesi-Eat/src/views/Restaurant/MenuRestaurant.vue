@@ -1,12 +1,13 @@
 <script setup>
 import Band from '../../components/Band.vue';
 import NavbarRestaurant from '../../components/NavbarRestaurant.vue';
+import ItemItemRestaurant from '../../components/ItemItemRestaurant.vue'
 import { saveMenuSelect } from '../../store/menu.js'
 import { ref, onBeforeMount } from 'vue';
 
 const menuStore = saveMenuSelect()
-const restaurants = ref([]);
-const sentBodyData = { restaurantId: menuStore._id}
+const Items = ref([]);
+const sentBodyData = { restaurantId: menuStore._id }
 const name = "Menu de " + menuStore.name;
 
 
@@ -18,7 +19,7 @@ async function getMenus() {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + localStorage.token
             },
-            body:sentBodyData
+            body: sentBodyData
         });
         const jsonData = await response.json();
         let dataBody = jsonData.body
@@ -41,12 +42,12 @@ async function getItems() {
                 'Content-Type': 'application/json',
                 'Authorization': 'Token ' + localStorage.token
             },
-            body:menuStore._id
+            body: sentBodyData
         });
         const jsonData = await response.json();
         let dataBody = jsonData.body
         if (response.ok) {
-            restaurants.value = dataBody;
+            Items.value = dataBody;
             console.log(dataBody)
         } else {
             console.log('Une erreur s\'est produite lors de la récupération des restaurants');
@@ -56,8 +57,8 @@ async function getItems() {
     }
 }
 
-onBeforeMount( async () => {
-  await getItems()
+onBeforeMount(async () => {
+    await getItems()
 })
 
 </script>
@@ -65,6 +66,14 @@ onBeforeMount( async () => {
 <template>
     <NavbarRestaurant />
     <Band :name=name />
+
+    <div v-for="Item in Items" :key="Item.id" class="Item-div">
+        <ItemItemRestaurant 
+        :name="Item.name" 
+        :image="Item.image" 
+        :price="Item.price"
+        :_id="Item._id" />
+    </div>
 
     <div>
         <router-link to="/createItem" custom v-slot="{ navigate }">
@@ -76,9 +85,7 @@ onBeforeMount( async () => {
 </template>
 
 <style scoped>
-
-
-.createItem{
+.createItem {
     width: 150px;
     height: 150px;
     background-color: rgb(209, 205, 205);
