@@ -30,6 +30,11 @@ import { RouterLink, RouterView } from 'vue-router'
           Main Page Restaurateur
         </button>
       </router-link>
+      <router-link to="/mainDelivery" custom v-slot="{ navigate }">
+        <button @click="navigate" role="link" class="links">
+          Main Page Livreur
+        </button>
+      </router-link>
     </div>
   </body>
 </template>

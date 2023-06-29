@@ -19,6 +19,8 @@ import MenuRestaurant from '../views/Restaurant/MenuRestaurant.vue'
 import ComponentsDownload from '../views/ComponentsDownload.vue'
 import MenuClient from '../views/Client/MenuClient.vue'
 import CreateItem from '../views/Restaurant/CreateItem.vue'
+import NotFound from '../components/NotFound.vue'
+import MainDelivery from '../views/Delivery/MainDelivery.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -27,6 +29,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
+    },
+    {
+      path:'/:pathMatch(.*)*',
+      name:'not-found',
+      component:NotFound
     },
     {
       path:'/logIn',
@@ -122,6 +129,11 @@ const router = createRouter({
       path:'/createItem',
       name:'CreateItem',
       component:CreateItem
+    },
+    {
+      path:'/mainDelivery',
+      name:'MainDelivery',
+      component:MainDelivery
     }
   ]
 })
