@@ -10,11 +10,12 @@ const name ="Menu de "+ menuStore.name;
 async function getMenus() {
   try {
     const response = await fetch(import.meta.env.VITE_ENDPOINT_URL + 'menus/ID_TO_COMPLETE', {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Token ' + localStorage.token
       },
+      body:menuStore._id
     });
     const jsonData = await response.json();
     let dataBody = jsonData.body
@@ -32,11 +33,12 @@ async function getMenus() {
 async function getItems() {
   try {
     const response = await fetch(import.meta.env.VITE_ENDPOINT_URL + 'items/ID_TO_COMPLETE', {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Token ' + localStorage.token
       },
+      body:menuStore._id
     });
     const jsonData = await response.json();
     let dataBody = jsonData.body
