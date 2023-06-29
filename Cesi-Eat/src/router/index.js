@@ -21,6 +21,7 @@ import MenuClient from '../views/Client/MenuClient.vue'
 import CreateItem from '../views/Restaurant/CreateItem.vue'
 import NotFound from '../components/NotFound.vue'
 import MainDelivery from '../views/Delivery/MainDelivery.vue'
+import DeliveryAccount from '../views/Delivery/deliveryAccount.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -134,6 +135,11 @@ const router = createRouter({
       path:'/mainDelivery',
       name:'MainDelivery',
       component:MainDelivery
+    },
+    {
+      path:'/deliveryAccount',
+      name:'DeliveryAccount',
+      component:DeliveryAccount
     }
   ]
 })

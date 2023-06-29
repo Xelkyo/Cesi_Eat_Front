@@ -21,6 +21,7 @@ async function submitForm(event) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': 'Token ' + localStorage.token
             },
             body: JSON.stringify(formData)
         });

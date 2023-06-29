@@ -13,6 +13,7 @@ async function getMenus() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': 'Token ' + localStorage.token
       },
     });
     const jsonData = await response.json();
@@ -34,6 +35,7 @@ async function getItems() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': 'Token ' + localStorage.token
       },
     });
     const jsonData = await response.json();

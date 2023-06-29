@@ -12,7 +12,9 @@ async function getRestaurant() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': 'Token ' + localStorage.token
       },
+
     });
     const jsonData = await response.json();
     let dataBody = jsonData.body

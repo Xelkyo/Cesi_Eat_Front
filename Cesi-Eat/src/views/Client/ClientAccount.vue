@@ -21,6 +21,7 @@ async function getUserData() {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': 'Token ' + localStorage.token
       },
     });
     if (UserData.ok) {
