@@ -1,5 +1,10 @@
 <script setup>
 const props = defineProps(['name', 'quantity', 'price', 'img'])
+
+function removeItem()
+{
+    console.log("Work in Progress function...")
+}
 </script>
 
 <template>
@@ -11,13 +16,23 @@ const props = defineProps(['name', 'quantity', 'price', 'img'])
     </div>
 </div>
     <div class="product-qty">
-        <div>Quantité : {{ quantity }}</div>
+        <div>Quantité : 1</div>
     </div>
+    <button @click="removeItem()" class="remove-btn">Retirer l'article</button>
 </template>
 
 <style scoped>
 .product-img {
     width: 180px;
+}
+
+.remove-btn{
+    background-color: rgb(126, 1, 1);
+    width: 15%;
+    height: 25%;
+    font-size: 10px;
+    margin-top: 10%;
+    margin-right: 10px;
 }
 
 .product-infos {

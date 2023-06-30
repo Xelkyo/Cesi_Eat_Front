@@ -1,15 +1,21 @@
 <script setup>
 import {saveMenuSelect} from '../store/menu.js'
+import { StoreInCart } from '../store/cart.js'
+import { useCartStore } from '../store/cart.js'
 
 const menuStore = saveMenuSelect()
-const props = defineProps(['name', 'image', 'source', '_id'])
+const CartStore = StoreInCart()
+const CartCount = useCartStore()
 
-let pathlink = "/menu"+props.source;
+const props = defineProps(['name', 'image', 'source', '_id','target'])
+
+let pathlink = (props.target || "/menu")+props.source;
 
 function storeId(){
-    menuStore.transfer_id(props._id,props.name)
+    menuStore.transfer_id(props._id,props.name);
+    CartCount.reset();
+    CartStore.ResetCart();
 }
-
 </script>
 
 <template>

@@ -1,4 +1,8 @@
 <script setup>
+import {TTCCart} from '../store/cart.js'
+
+const storeCart = TTCCart();
+
 const props = defineProps(['sum_order'])
 
 var delivery_price = (1.5 + 0.02* props.sum_order)*100;
@@ -6,7 +10,12 @@ delivery_price = (Math.round(delivery_price))/100
 var TVA = (0.1* props.sum_order)*100;
 TVA = (Math.round(TVA))/100
 
-var total=props.sum_order+delivery_price+TVA
+var total=(props.sum_order+delivery_price+TVA)*100
+total = (Math.round(total))/100
+
+storeCart.StorePrice(total);
+
+
 
 </script>
 

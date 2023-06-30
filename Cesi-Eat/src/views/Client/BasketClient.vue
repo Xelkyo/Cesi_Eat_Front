@@ -2,13 +2,17 @@
 import Band from '../../components/Band.vue';
 import NavbarClient from '../../components/NavbarClient.vue';
 import CartProductItem from '../../components/CartProductItem.vue';
-import { orderItems } from '../../data/orderMcDo.json'
 import CartPayment from '../../components/CartPayment.vue'
+import { StoreInCart } from '../../store/cart.js'
+
+const CartStore = StoreInCart()
 
 var sum_order = 0;
 
-for (let Item of orderItems){
-    sum_order +=Item.price*Item.quantity
+for (let Item of CartStore.Items){
+    sum_order +=Item.price
+    sum_order = sum_order*100
+    sum_order = (Math.round(sum_order))/100
 }
 
 </script>
@@ -18,12 +22,11 @@ for (let Item of orderItems){
     <Band name="Panier" />
     <div class="main-div">
         <article class="order-article">
-            <div v-for="orderItem in orderItems" :key="orderItem.id" class="orderItem-div">
+            <div v-for="Item in CartStore.Items" :key="Item.id" class="orderItem-div">
                 <CartProductItem 
-                :name="orderItem.name" 
-                :quantity="orderItem.quantity" 
-                :price="orderItem.price" 
-                :img="orderItem.img" />
+                :name="Item.name" 
+                :price="Item.price" 
+                :img="Item.image" />
             </div>
         </article>
         <article class="payment-article">

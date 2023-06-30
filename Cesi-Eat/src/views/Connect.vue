@@ -19,23 +19,6 @@ import { RouterLink, RouterView } from 'vue-router'
         </button>
       </router-link>
     </div>
-    <div class="tempo">
-      <router-link to="/mainClient" custom v-slot="{ navigate }">
-        <button @click="navigate" role="link" class="links">
-          Main Page Client
-        </button>
-      </router-link>
-      <router-link to="/mainRestaurant" custom v-slot="{ navigate }">
-        <button @click="navigate" role="link" class="links">
-          Main Page Restaurateur
-        </button>
-      </router-link>
-      <router-link to="/mainDelivery" custom v-slot="{ navigate }">
-        <button @click="navigate" role="link" class="links">
-          Main Page Livreur
-        </button>
-      </router-link>
-    </div>
   </body>
 </template>
 
